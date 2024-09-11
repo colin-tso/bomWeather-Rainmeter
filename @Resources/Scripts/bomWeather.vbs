@@ -107,16 +107,16 @@ Set objStream = CreateObject("ADODB.Stream")
 objStream.CharSet = "utf-8"
 objStream.Open
 
-objStream.WriteText FormatCalc("StationAt", stationArray(0) & " at " & formatted24hr(ConvertUTCToLocal(issueArray(i))))
+objStream.WriteText FormatCalc("StationAt", stationArray(0) & " at " & formatted12hr(ConvertUTCToLocal(issueArray(i))))
 objStream.WriteText FormatCalc("CurrentTemp", currentTempArray(0) & degreeSymbol)
 objStream.WriteText FormatCalc("AppTemp", apparentTempArray(0) & degreeSymbol)
 objStream.WriteText FormatCalc("ObservedMaxTempTime", "NA")
 objStream.WriteText FormatCalc("CurrentRelHumidity", humidityArray(0))
 objStream.WriteText FormatCalc("CurrentRainfall", rainfallArray(0))
 objStream.WriteText FormatCalc("CurrentWindDirSpeed", windDirArray(0) & " " & windSpeedArray(0) & "km/h")
-objStream.WriteText FormatCalc("CurrentForecastShortText", "Forecast for " & WeekdayName(Weekday(ConvertUTCToLocal(dateArray(0)))) & " Max: " & highsArray(i) & degreeSymbol ) 
-objStream.WriteText FormatCalc("FeelsLike", feelsLikeArray(0) & degreeSymbol )
-objStream.WriteText FormatCalc("LaterTemp", laterLabelArray(0) & ": " & tempLaterArray(0) & degreeSymbol )
+objStream.WriteText FormatCalc("CurrentForecastShortText", "") 
+objStream.WriteText FormatCalc("FeelsLike", feelsLikeArray(0) & degreeSymbol)
+objStream.WriteText FormatCalc("LaterTemp", laterLabelArray(0) & ": " & tempLaterArray(0) & degreeSymbol)
 
 if Hour(Now()) < 9 Then
   objStream.WriteText FormatCalc("Sunrise", formatted24hr(ConvertUTCToLocal(sunriseArray(0))))
@@ -132,7 +132,7 @@ For i = 0 to uBound(forecastArray)
 
   objStream.WriteText FormatCalc("Day" & i & "Forecast", forecastArray(i))
   objStream.WriteText FormatCalc("Day" & i & "ForecastImage", ForecastTexttoNumber(forecastArray(i),i,isNightArray(0)))
-  objStream.WriteText FormatCalc("Day" & i & "HighLow", highsArray(i) & degreeSymbol & "/" & lowsArray(i))
+  objStream.WriteText FormatCalc("Day" & i & "HighLow", highsArray(i) & degreeSymbol & "/" & lowsArray(i) & degreeSymbol)
   objStream.WriteText FormatCalc("Day" & i & "ChanceofRain", chanceArray(i))
   objStream.WriteText FormatCalc("Day" & i & "Date", ConvertUTCToLocal(dateArray(i)))
   objStream.WriteText FormatCalc("Day" & i & "DayName", WeekdayName(Weekday(ConvertUTCToLocal(dateArray(i)))))
@@ -153,7 +153,7 @@ For i = 1 to 6 - uBound(forecastArray)
 
 Next
 
-objStream.WriteText FormatCalc("LastUpdated", Now())
+objStream.WriteText FormatCalc("LastUpdated", ConvertUTCToLocal(issueArray(0)))
 
 if debugActive Then
   objStream.WriteText vbCRLF & "# Rainmeter Measure Definitions" & vbCRLF & vbCRLF
@@ -171,12 +171,9 @@ measureIndex = 1
 objStream.Open
 For i = 0 to 12
 
-  'objStream.WriteText FormatCalc("Hour" & i & "TimeUTC", hourlyTimeArray(i))
-  'objStream.WriteText FormatCalc("Hour" & i & "Time", ConvertUTCToLocal(hourlyTimeArray(i)))
-  objStream.WriteText FormatCalc("Hour" & i & "Time24", formatted24hr(ConvertUTCToLocal(hourlyTimeArray(i))))
+  objStream.WriteText FormatCalc("Hour" & i & "Time24", formatted12hrNoPad(ConvertUTCToLocal(hourlyTimeArray(i))))
   objStream.WriteText FormatCalc("Hour" & i & "Chance", hourlyChanceArray(i))
   objStream.WriteText FormatCalc("Hour" & i & "Temp", hourlyTempArray(i) & degreeSymbol)
-  'objStream.WriteText FormatCalc("Hour" & i & "Icon", hourlyIconArray(i))
   objStream.WriteText FormatCalc("Hour" & i & "IconImage", ForecastTexttoNumber(hourlyIconArray(i),0,hourlyIsNightArray(i)))
 
 Next
