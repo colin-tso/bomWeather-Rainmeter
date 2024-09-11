@@ -2,7 +2,9 @@
 
 An Australian Weather Rainmeter Skin based on the Bureau of Meteorology data
 
-![Example](https://kanine.github.io/downloads/3hour.jpg)
+![Example 1](https://github.com/user-attachments/assets/61c90894-9704-4ead-af6d-a72f9a140b00)
+
+![Example 2](https://github.com/user-attachments/assets/fd613717-7cbe-4ac0-a4c4-107c7cab0ebf)
 
 Installation
 ============
