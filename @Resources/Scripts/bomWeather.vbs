@@ -100,8 +100,6 @@ hourlytempArray = jsonValuestoArray("temp",bomHourly)
 hourlyWindDirArray = jsonValuestoArray("direction",bomHourly)
 hourlyWindSpeedArray = jsonValuestoArray("speed_kilometre",bomHourly)
 
-' Create Formatted Variables for use by the Skin
-
 Dim objStream
 Set objStream = CreateObject("ADODB.Stream")
 objStream.CharSet = "utf-8"
@@ -113,6 +111,7 @@ objStream.WriteText FormatCalc("AppTemp", apparentTempArray(0) & degreeSymbol)
 objStream.WriteText FormatCalc("ObservedMaxTempTime", "NA")
 objStream.WriteText FormatCalc("CurrentRelHumidity", humidityArray(0))
 objStream.WriteText FormatCalc("CurrentRainfall", rainfallArray(0))
+objStream.WriteText FormatCalc("CurrentWindDir", windDirArray(0))
 objStream.WriteText FormatCalc("CurrentWindDirSpeed", windDirArray(0) & " " & windSpeedArray(0) & "km/h")
 objStream.WriteText FormatCalc("CurrentForecastShortText", "") 
 objStream.WriteText FormatCalc("FeelsLike", feelsLikeArray(0) & degreeSymbol)
