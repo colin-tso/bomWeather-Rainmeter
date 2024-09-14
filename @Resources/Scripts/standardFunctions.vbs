@@ -90,6 +90,8 @@ Function formatted12hr(pDate)
 	Else
 		am_pm = "AM"
 	End If
+
+	If hourNum = 0 Then hourNum = 12
 	
 	formatted12hr = hourNum & ":" & MyLpad(Minute(pDate), "0", 2) & " " & am_pm
 End Function
