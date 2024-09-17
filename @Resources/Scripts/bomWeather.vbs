@@ -194,13 +194,21 @@ objStream.Open
 
 For i = 0 to 12*3 Step 3
 
-  objStream.WriteText FormatCalc("3Hour" & i / 3 & "Time24", formatted12hrNoPad(ConvertUTCToLocal(hourlyTimeArray(i))))
+  objStream.WriteText FormatCalc("3Hour" & i / 3 & "Time24", ConvertUTCToLocal(hourlyTimeArray(i)))
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "Chance", hourlyChanceArray(i))
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "Temp", hourlyTempArray(i) & degreeSymbol)
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "IconImage", hourlyIconArray(i) & IIf(hourlyIsNightArray(i), "_night", "") & ".png")
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "Wind", hourlyWindDirArray(i) & " " & hourlyWindSpeedArray(i))
 
 Next
+
+if Hour(Now()) < 9 Then
+  objStream.WriteText FormatCalc("Sunrise",ConvertUTCToLocal(sunriseArray(0)))
+  objStream.WriteText FormatCalc("Sunset",ConvertUTCToLocal(sunsetArray(0)))
+Else
+  objStream.WriteText FormatCalc("Sunrise", ConvertUTCToLocal(sunriseArray(1)))
+  objStream.WriteText FormatCalc("Sunset",ConvertUTCToLocal(sunsetArray(0)))
+End If
 
 objStream.WriteText FormatCalc("LastUpdated", Now())
 
