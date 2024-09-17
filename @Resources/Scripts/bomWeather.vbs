@@ -154,6 +154,7 @@ For i = 1 to 6 - uBound(forecastArray)
 Next
 
 objStream.WriteText FormatCalc("LastUpdated", ConvertUTCToLocal(issueArray(0)))
+objStream.WriteText FormatCalc("LastChecked", Now())
 
 if debugActive Then
   objStream.WriteText vbCRLF & "# Rainmeter Measure Definitions" & vbCRLF & vbCRLF
