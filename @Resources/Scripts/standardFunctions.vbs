@@ -291,3 +291,11 @@ Function ConvertUTCToLocal(varTime)
 	End If
 
 End Function
+
+Function IIf(bClause, sTrue, sFalse)
+    If CBool(bClause) Then
+        IIf = sTrue
+    Else 
+        IIf = sFalse
+    End If
+End Function

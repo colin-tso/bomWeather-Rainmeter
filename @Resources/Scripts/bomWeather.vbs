@@ -71,6 +71,7 @@ If debugActive Then
 End If
 
 forecastArray = jsonValuestoArray("extended_text",bomDaily)
+iconArray = jsonValuestoArray("icon_descriptor",bomDaily)
 highsArray = jsonValuestoArray("temp_max",bomDaily)
 lowsArray = jsonValuestoArray("temp_min",bomDaily)
 chanceArray = jsonValuestoArray("chance",bomDaily)
@@ -130,7 +131,7 @@ LogThis(uBound(forecastArray) & " Forecasts")
 For i = 0 to uBound(forecastArray)
 
   objStream.WriteText FormatCalc("Day" & i & "Forecast", forecastArray(i))
-  objStream.WriteText FormatCalc("Day" & i & "ForecastImage", ForecastTexttoNumber(forecastArray(i),i,isNightArray(0)))
+  objStream.WriteText FormatCalc("Day" & i & "ForecastImage", iconArray(i) & ".png")
   objStream.WriteText FormatCalc("Day" & i & "HighLow", highsArray(i) & degreeSymbol & "/" & lowsArray(i) & degreeSymbol)
   objStream.WriteText FormatCalc("Day" & i & "ChanceofRain", chanceArray(i))
   objStream.WriteText FormatCalc("Day" & i & "Date", ConvertUTCToLocal(dateArray(i)))
@@ -173,7 +174,7 @@ For i = 0 to 12
   objStream.WriteText FormatCalc("Hour" & i & "Time24", formatted12hrNoPad(ConvertUTCToLocal(hourlyTimeArray(i))))
   objStream.WriteText FormatCalc("Hour" & i & "Chance", hourlyChanceArray(i))
   objStream.WriteText FormatCalc("Hour" & i & "Temp", hourlyTempArray(i) & degreeSymbol)
-  objStream.WriteText FormatCalc("Hour" & i & "IconImage", ForecastTexttoNumber(hourlyIconArray(i),0,hourlyIsNightArray(i)))
+  objStream.WriteText FormatCalc("Hour" & i / 3 & "IconImage", hourlyIconArray(i) & IIf(hourlyIsNightArray(i), "_night", "") & ".png")
 
 Next
 
@@ -196,7 +197,7 @@ For i = 0 to 12*3 Step 3
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "Time24", formatted12hrNoPad(ConvertUTCToLocal(hourlyTimeArray(i))))
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "Chance", hourlyChanceArray(i))
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "Temp", hourlyTempArray(i) & degreeSymbol)
-  objStream.WriteText FormatCalc("3Hour" & i / 3 & "IconImage", ForecastTexttoNumber(hourlyIconArray(i),0,hourlyIsNightArray(i)))
+  objStream.WriteText FormatCalc("3Hour" & i / 3 & "IconImage", hourlyIconArray(i) & IIf(hourlyIsNightArray(i), "_night", "") & ".png")
   objStream.WriteText FormatCalc("3Hour" & i / 3 & "Wind", hourlyWindDirArray(i) & " " & hourlyWindSpeedArray(i))
 
 Next
