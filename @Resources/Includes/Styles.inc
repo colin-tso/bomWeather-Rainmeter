@@ -1,15 +1,3 @@
-[styleTitle]
-StringAlign=CENTER
-StringCase=UPPER
-StringStyle=BOLD
-InlineSetting=Shadow | 1 | 1 | 1 | 0,0,0,100
-FontColor=#colorText#
-FontFace=#fontName1#
-FontSize=9
-AntiAlias=1
-ClipString=1
-AccurateText=1
-
 [styleCurrentTemp]
 StringAlign=LEFT
 StringCase=NONE
@@ -45,6 +33,31 @@ AntiAlias=1
 ClipString=1
 AccurateText=1
 
+[styleLeftTextInter]
+StringAlign=LEFT
+StringCase=NONE
+InlineSetting=Shadow | 1 | 1 | 1 | 0,0,0,100
+FontColor=#colorText#
+FontFace=#fontName2#
+FontSize=#textSize#
+AntiAlias=1
+ClipString=1
+AccurateText=1
+
+[styleLeftTextBoldFirstSentence]
+StringAlign=LEFT
+StringCase=NONE
+InlineSetting=Shadow | 1 | 1 | 1 | 0,0,0,100
+InlineSetting2=Weight | 700
+InlinePattern2=^[^\.]*
+FontColor=#colorText#
+FontFace=#fontName2#
+FontSize=#textSize#
+AntiAlias=1
+ClipString=1
+AccurateText=1
+DynamicVariables=1
+
 [styleRightText]
 StringAlign=RIGHT
 StringCase=NONE
@@ -56,6 +69,19 @@ AntiAlias=1
 ClipString=1
 AccurateText=1
 
+[styleRightTextTodayExtras]
+StringAlign=RIGHT
+StringCase=NONE
+InlineSetting=Shadow | 1 | 1 | 1 | 0,0,0,100
+InlineSetting2=Size | 8
+InlinePattern2=^[^:]*
+FontColor=#colorText#
+FontFace=#fontName2#
+FontSize=#textSize#
+AntiAlias=1
+ClipString=0
+AccurateText=1
+
 [styleCenterText]
 StringAlign=CENTER
 StringCase=NONE
@@ -65,6 +91,7 @@ FontFace=#fontName1#
 FontSize=#textSize#
 AntiAlias=1
 ClipString=0
+AccurateText=1
 
 [styleCenterRubik]
 StringAlign=CENTER
@@ -77,10 +104,21 @@ AntiAlias=1
 ClipString=0
 AccurateText=1
 
+[styleCenterTextInter]
+StringAlign=CENTER
+StringCase=NONE
+InlineSetting=Shadow | 1 | 1 | 1 | 0,0,0,100
+FontColor=#colorText#
+FontFace=#fontName2#
+FontSize=#textSize#
+AntiAlias=1
+ClipString=1
+AccurateText=1
+
 [styleCenterRain]
 StringAlign=CENTER
 StringCase=NONE
-FontFace=Rubik
+FontFace=#fontName1#
 FontColor=#colorText#
 FontSize=#textSize#
 InlineSetting=Shadow | 1 | 1 | 1 | 0,0,0,100
@@ -93,3 +131,6 @@ AccurateText=1
 [styleBar]
 BarOrientation=HORIZONTAL
 SolidColor=0,255,255,15
+
+[styleLine]
+LineColor=255,255,255,50
