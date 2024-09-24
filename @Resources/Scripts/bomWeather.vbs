@@ -203,7 +203,7 @@ For i = 0 to 12*3 Step 3
 
 Next
 
-if Hour(Now()) < 9 Then
+if Hour(Now()) < Hour(ConvertUTCToLocal(sunriseArray(0))) Then
   objStream.WriteText FormatCalc("Sunrise",ConvertUTCToLocal(sunriseArray(0)))
   objStream.WriteText FormatCalc("Sunset",ConvertUTCToLocal(sunsetArray(0)))
 Else
